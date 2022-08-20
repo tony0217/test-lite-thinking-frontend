@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<p align="center" style="background: black">
+   <a href="https://litethinking.com/home" target="blank"><img src="https://litethinking.com/static/media/Logo_Lite_Thinking_Sin_Fondo.0aa257fac8571af0f71e.png" width="200" alt="lite Logo" /></a>
+</p>
 
 ## Getting Started
 
