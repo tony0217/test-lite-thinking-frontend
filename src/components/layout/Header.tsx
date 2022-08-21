@@ -7,7 +7,6 @@ import { styled } from '@mui/material/styles';
 
 import Logo from '@assets/icons/Logo_Lite_Thinking.png';
 import CardMedia from '@mui/material/CardMedia';
-import { log } from 'console';
 
 const Container = styled(AppBar)(({ theme }) => ({
   backgroundColor: theme.palette.default.main,

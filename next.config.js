@@ -9,11 +9,6 @@ const nextConfig = {
         destination: '/home',
         permanent: true,
       },
-      // {
-      //   source: '/inicio',
-      //   destination: '/home',
-      //   permanent: true,
-      // },
     ];
   },
 }

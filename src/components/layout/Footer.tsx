@@ -1,7 +1,6 @@
 import React, { SyntheticEvent, useCallback, useState } from 'react';
 import { useRouter } from 'next/router';
 
-
 import { styled } from '@mui/material/styles';
 import BottomNavigation, { BottomNavigationProps } from '@mui/material/BottomNavigation';
 import BottomNavigationAction, { BottomNavigationActionProps } from '@mui/material/BottomNavigationAction';
@@ -9,8 +8,6 @@ import HomeIcon from '@mui/icons-material/Home';
 import AddBusinessIcon from '@mui/icons-material/AddBusiness';
 import BusinessIcon from '@mui/icons-material/Business';
 import Paper, { PaperProps } from '@mui/material/Paper';
-import { log } from 'console';
-
 
 const FooterStyled = styled(Paper)<PaperProps>(({ theme }) => ({
   backgroundColor: theme.palette.default.main,
@@ -20,11 +17,15 @@ const FooterStyled = styled(Paper)<PaperProps>(({ theme }) => ({
   right: 0
 }));
 
-const FooterNavigation = styled(BottomNavigation)<BottomNavigationProps>(({ theme }) => ({
+const FooterNavigation = styled(
+  BottomNavigation
+)<BottomNavigationProps>(({ theme }) => ({
   backgroundColor: theme.palette.default.main,
 }));
 
-const FooterNavigationAction = styled(BottomNavigationAction)<BottomNavigationActionProps>(({ theme }) => ({
+const FooterNavigationAction = styled(
+  BottomNavigationAction
+)<BottomNavigationActionProps>(({ theme }) => ({
   backgroundColor: theme.palette.default.main,
   color: theme.palette.neutrals.white,
 }));
@@ -47,19 +48,16 @@ const navigation = [
     label: 'Empresas Registradas',
     icon: <BusinessIcon />
   },
-
-]
+];
 
 function Footer() {
   const router = useRouter();
   const [value, setValue] = useState(router.pathname);
 
-  const handleChange =  useCallback((event: SyntheticEvent, newValue: string) => {
+  const handleChange = useCallback((event: SyntheticEvent, newValue: string) => {
     setValue(newValue);
     router.push(newValue);
   }, []);
-
-
 
   return (
     <FooterStyled elevation={3}>
