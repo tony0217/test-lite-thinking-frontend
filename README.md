@@ -40,6 +40,7 @@ abrir [http://localhost:3000](http://localhost:3000) en el navegador.
 2. Llenar las variables de entorno de prod
 
 # Notas
+```
 Mirar aplicacion desplegada:
 https://test-lite-thinking-frontend.herokuapp.com/
 ```

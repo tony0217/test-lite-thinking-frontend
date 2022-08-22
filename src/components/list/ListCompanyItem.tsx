@@ -10,14 +10,17 @@ import Fade from '@mui/material/Fade';
 import Icon, { IconProps } from '@mui/material/Icon';
 import ListItem, { ListItemProps } from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
+import Popover from '@mui/material/Popover';
 import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
 
 import { Company, SuccessResponse } from '@core/interfaces/company.interface';
 import CompanyApiContext from '@core/contexts/CompanyApiContext';
 import useToggleSnackBar from '@core/hooks/useToggleSnackBar';
 import SnackBarMessages from '@components/shared/SnackBarMessages';
+import useTogglePopover from '@core/hooks/useTogglePopover';
 
-import CompanySelectedContext from '@core/contexts/CompanySelectedContext';
+import ListDeatail from './ListDeatail';
 
 const ContentItem = styled(ListItem,
   { shouldForwardProp: (prop) => prop !== 'index' }
@@ -82,6 +85,9 @@ function ListCompanyItem({ company, index }: ListCompanyItemProps) {
   const [loading, setLoading] = useState(false)
   const [severity, setSeverity] = useState<AlertProps['severity']>('error')
   const { open, handleClickOpen, handleClose } = useToggleSnackBar(false)
+  const [anchorEl, popoverId, openPop, clickOpen, clickClose] =
+    useTogglePopover();
+
 
   const removeCompany = async (id: string) => {
 
@@ -113,17 +119,38 @@ function ListCompanyItem({ company, index }: ListCompanyItemProps) {
         <ContentItem index={index} sx={{ borderRadius: '6px' }}>
           <Stack direction="row" spacing={2} sx={{ my: 1 }}>
             <ListItemText
-              sx={{ my: 0, ml: 2 }}
+              onMouseEnter={clickOpen as any}
+              onMouseLeave={clickClose}
+              sx={{ my: 0, ml: 2, cursor: 'pointer' }}
               primary={name}
             />
+            <Popover
+              key={popoverId}
+              id="mouse-over-popover"
+              sx={{
+                pointerEvents: 'none',
+              }}
+              open={openPop}
+              anchorEl={anchorEl}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              onClose={clickClose}
+              disableRestoreFocus
+            >
+              <ListDeatail company={company}/>
+            </Popover>
           </Stack>
           <Stack direction="row" sx={{ my: -1 }}>
             <Link href={{
               pathname: `${pathname}/${companyId}`,
             }}>
-              <EditButton variant="text"
-              // onClick={handleClickOpen}
-              >
+              <EditButton variant="text">
                 <IconButton action className="uil uil-edit" />
                 Editar
               </EditButton>

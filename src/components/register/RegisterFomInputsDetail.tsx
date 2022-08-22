@@ -21,7 +21,7 @@ const AlertError = styled(Alert)<AlertProps>(({ theme }) => ({
 
 function RegisterFomInputsDetail() {
   const router = useRouter();
-  const  {id} = router.query;
+  const { id } = router.query;
   const { update, getByOne } = useContext(CompanyApiContext);
   const { control, formState: { errors }, handleSubmit } = useForm<Company>();
   const [snackbarMessage, setSnackbarMessage] = useState('')
@@ -31,12 +31,12 @@ function RegisterFomInputsDetail() {
   const [severity, setSeverity] = useState<AlertProps['severity']>('error')
   const { open, handleClickOpen, handleClose } = useToggleSnackBar(false)
 
-  
+
   useEffect(() => {
-    if(id !== undefined) {
+    if (id !== undefined) {
       setCompanyId(String(id));
     }
-    
+
     const getById = async () => {
       try {
         if (companyId) {
@@ -53,10 +53,7 @@ function RegisterFomInputsDetail() {
         window.console.error(error.message);
       }
     };
-    return()=>{
-      getById()
-    }
-    
+    getById()
   }, [])
 
   const onSubmit: SubmitHandler<Company> = async (params) => {
@@ -91,7 +88,6 @@ function RegisterFomInputsDetail() {
         snackbarMessage={snackbarMessage}
         severity={severity}
       />
-
       <Controller
         name="nit"
         control={control}

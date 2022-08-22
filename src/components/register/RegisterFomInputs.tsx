@@ -13,7 +13,6 @@ import CompanyApiContext from '@core/contexts/CompanyApiContext';
 import useToggleSnackBar from '@core/hooks/useToggleSnackBar';
 import SnackBarMessages from '@components/shared/SnackBarMessages';
 
-
 const AlertError = styled(Alert)<AlertProps>(({ theme }) => ({
   width: 350,
   backgroundColor: 'transparent',
