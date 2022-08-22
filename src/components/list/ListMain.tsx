@@ -2,27 +2,28 @@ import React from 'react';
 
 import { styled } from '@mui/material';
 import Grid, { GridProps } from '@mui/material/Grid';
-import Typography, { TypographyProps } from '@mui/material/Typography';
+import Fade from '@mui/material/Fade';
+
+import ListCompany from './ListCompany';
 
 const ContainerTable = styled(Grid)<GridProps>(({ theme }) => ({
   boxSizing: 'border-box',
   display: 'flex',
-  justifyContent: 'flex-start',
-  alignItems: 'flex-start',
+  justifyContent: 'center',
+  alignItems: 'center',
   paddingTop: theme.spacing(12),
 }));
 
-const Title = styled(Typography)<TypographyProps>(({ theme }) => ({
-  ...theme.typography.h2,
-  color: theme.palette.text.primary,
-  marginBottom: theme.spacing(4)
-}));
 
 function ListMain() {
+
   return (
-    <ContainerTable container>
-      List
-    </ContainerTable>
+    <Fade in timeout={350}>
+      <ContainerTable container>
+        <ListCompany />
+      </ContainerTable>
+    </Fade>
+
   );
 }
 

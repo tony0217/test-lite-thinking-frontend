@@ -22,9 +22,9 @@ const MoreBtn = styled(Button)<ButtonProps>(({ theme }) => ({
   }
 }));
 
-function Hero() {
+function HomeHero() {
   return (
-    <Grid item md={12} pb={18}>
+    <Grid item md={12} pb={13}>
       <Box
         sx={{
           position: 'relative',
@@ -51,4 +51,4 @@ function Hero() {
   )
 }
 
-export default Hero;
+export default HomeHero;

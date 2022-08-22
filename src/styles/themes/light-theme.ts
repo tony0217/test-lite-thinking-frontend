@@ -100,22 +100,22 @@ const theme = createTheme({
     info: {
       dark: '#0D3C61',
       main: '#2196F3',
-      light: '#E9F4FE',
+      light: '#2196F3',
     },
     warning: {
       dark: '#5F2B01',
       main: '#ED6C02',
-      light: '#FDF0E6',
+      light:'#ED6C02',
     },
     success: {
       dark: '#1E4620',
       main: '#4CAF50',
-      light: '#EDF7ED',
+      light: '#4CAF50',
     },
     error: {
       dark: '#D21B16',
       main: '#F44336',
-      light: '#FEECEB',
+      light:'#F44336',
     },
     text: {
       primary: '#24134A',

@@ -2,7 +2,9 @@ import React from 'react';
 
 import { styled } from '@mui/material';
 import Grid, { GridProps } from '@mui/material/Grid';
-import Typography, { TypographyProps } from '@mui/material/Typography';
+import Fade from '@mui/material/Fade';
+
+import RegisterForm from './RegisterForm';
 
 const ContainerTable = styled(Grid)<GridProps>(({ theme }) => ({
   boxSizing: 'border-box',
@@ -10,19 +12,17 @@ const ContainerTable = styled(Grid)<GridProps>(({ theme }) => ({
   justifyContent: 'flex-start',
   alignItems: 'flex-start',
   paddingTop: theme.spacing(12),
-}));
-
-const Title = styled(Typography)<TypographyProps>(({ theme }) => ({
-  ...theme.typography.h2,
-  color: theme.palette.text.primary,
-  marginBottom: theme.spacing(4)
+  paddingBottom: theme.spacing(12),
 }));
 
 function RegisterMain() {
   return (
-    <ContainerTable container>
-      RegisterMain
-    </ContainerTable>
+    <Fade in timeout={350} >
+      <ContainerTable container>
+        <RegisterForm />
+      </ContainerTable>
+    </Fade>
+
   );
 }
 

@@ -2,7 +2,6 @@ import React from 'react';
 
 import { StaticImageData } from 'next/image';
 
-import { styled } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';

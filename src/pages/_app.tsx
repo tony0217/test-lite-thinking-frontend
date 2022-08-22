@@ -6,8 +6,10 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 
 import theme from '@styles/themes/light-theme';
+import CompanyApiContext from '@core/contexts/CompanyApiContext';
 
 import '../styles/globals.css'
+import COMPANIES_API from '@core/api/companies.api';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -18,8 +20,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" href="./favicon-32x32.png" sizes="32x32" />
       </Head>
       <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Component {...pageProps} />
+        <CompanyApiContext.Provider value={COMPANIES_API}>
+          <CssBaseline />
+          <Component {...pageProps} />
+        </CompanyApiContext.Provider>
       </ThemeProvider>
     </>
   )
