@@ -41,7 +41,7 @@ function RegisterFomInputsDetail() {
       try {
         if (companyId) {
           const company = await getByOne(String(companyId));
-          console.log('🚀 ~ file: RegisterFomInputsDetail.tsx ~ line 41 ~ getById ~ company', company)
+          window.console.log('🚀 ~ file: RegisterFomInputsDetail.tsx ~ line 41 ~ getById ~ company', company)
         }
       } catch (error: any) {
         if (error.response) {
