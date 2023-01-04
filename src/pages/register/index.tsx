@@ -5,7 +5,7 @@ import HeadTitle from '@components/shared/HeadTitle';
 function Register() {
   return (
     <MainLayout>
-      <HeadTitle title="Lite Thinking - Register" />
+      <HeadTitle title="Positive Thinking - Register" />
       <RegisterMain />
     </MainLayout>
   );

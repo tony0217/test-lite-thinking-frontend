@@ -8,8 +8,10 @@ import Typography, { TypographyProps } from '@mui/material/Typography';
 
 const Title = styled(Typography)<TypographyProps>(({ theme }) => ({
   ...theme.typography.h1,
-  color: theme.palette.neutrals.white,
-  marginBottom: theme.spacing(4)
+  color: theme.palette.primary.main,
+  background: theme.palette.text.primary,
+  marginBottom: theme.spacing(4),
+  width: 300
 }));
 
 const MoreBtn = styled(Button)<ButtonProps>(({ theme }) => ({
@@ -33,18 +35,21 @@ function HomeHero() {
         }}
       >
         <Title>
-          Lite Thinking
+        Positive Thinking
         </Title>
         <Typography variant="body1" sx={{ backgroundColor: '#000000' }} paragraph>
-          Servicios y soluciones innovadoras para un mundo digital.
-          Somos una Startup digital liderada por un equipo innovador con más de 15 años de experiencia y enfocada en servicios de capacitación y certificación TI, desarrollo e implementación de soluciones tecnológicas, servicios de consultoría, reclutamiento especializado y Staff Augmentation / Outsourcing TI.
+          We believe collaboration betters the world.
+
+          Our coworkers share knowledge with our clients in order to unlock their untapped potential.
+
+          We grow our clients’ business by leveraging technologies, delivering solutions and creating experiences to produce better outcomes and results that matter.
         </Typography>
         <MoreBtn
           sx={{ borderRadius: 0 }}
           variant="contained"
-          href="https://litethinking.com/lite-thinking"
+          href="https://positivethinking.tech/"
         >
-          Ver más
+          See more
         </MoreBtn>
       </Box>
     </Grid>

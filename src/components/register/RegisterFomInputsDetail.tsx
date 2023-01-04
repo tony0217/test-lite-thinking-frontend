@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
-import { useForm, Controller, SubmitHandler } from 'react-hook-form';
-
 import { styled } from '@mui/material/styles';
 import Alert, { AlertProps } from '@mui/material/Alert';
 import LoadingButton from '@mui/lab/LoadingButton';
@@ -14,53 +12,45 @@ import CompanyApiContext from '@core/contexts/CompanyApiContext';
 import useToggleSnackBar from '@core/hooks/useToggleSnackBar';
 import SnackBarMessages from '@components/shared/SnackBarMessages';
 
-const AlertError = styled(Alert)<AlertProps>(({ theme }) => ({
-  width: 350,
-  backgroundColor: 'transparent',
-}));
-
 function RegisterFomInputsDetail() {
   const router = useRouter();
   const { id } = router.query;
   const { update, getByOne } = useContext(CompanyApiContext);
-  const { control, formState: { errors }, handleSubmit } = useForm<Company>();
   const [snackbarMessage, setSnackbarMessage] = useState('')
-  const [companyId, setCompanyId] = useState(id)
+  const [companyId, setCompanyId] = useState<string>(id as any)
+  const [company, setCompany] = useState<Company>({} as Company)
+  const [formInput, setFormInput] = useState<Company>({} as Company);
 
   const [loading, setLoading] = useState(false)
   const [severity, setSeverity] = useState<AlertProps['severity']>('error')
   const { open, handleClickOpen, handleClose } = useToggleSnackBar(false)
 
-
   useEffect(() => {
     if (id !== undefined) {
       setCompanyId(String(id));
     }
-
-    const getById = async () => {
-      try {
-        if (companyId) {
-          const company = await getByOne(String(companyId));
-          window.console.log('🚀 ~ file: RegisterFomInputsDetail.tsx ~ line 41 ~ getById ~ company', company)
-        }
-      } catch (error: any) {
-        if (error.response) {
-          handleClickOpen()
-          setSeverity('error');
-          setSnackbarMessage(error.response.data.message);
-          setLoading(false)
-        }
-        window.console.error(error.message);
-      }
-    };
-    getById()
+    getByOne(companyId).then((res) => {
+      setCompany(res as unknown as Company)
+      setFormInput({
+        _id: id as any,
+        address: res.address,
+        mobilephone: res.mobilephone,
+        name: res.name,
+        nit: res.nit,
+      })
+    })
   }, [])
 
-  const onSubmit: SubmitHandler<Company> = async (params) => {
+  function handleChangeInput(event: any) {
+    setFormInput({ ...formInput, [event.target.name]: event.target.value });
+  }
+
+  const onSubmit = async (e: any) => {
+    e.preventDefault();
 
     try {
       setLoading(true)
-      const response: SuccessResponse | null = await update(String(companyId), params);
+      const response: SuccessResponse | null = await update(String(companyId), formInput);
 
       if (response?.status === 'success') {
         handleClickOpen()
@@ -80,127 +70,78 @@ function RegisterFomInputsDetail() {
     }
   };
 
+
   return (
-    <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ my: 15 }}>
+    <Box component="form" sx={{ my: 15 }}>
       <SnackBarMessages
         open={open}
         handleClose={handleClose}
         snackbarMessage={snackbarMessage}
         severity={severity}
       />
-      <Controller
+
+      <TextField
+        variant="standard"
+        fullWidth
         name="nit"
-        control={control}
-        defaultValue=""
-        render={({ field }) =>
-          <TextField
-            {...field}
-            variant="standard"
-            fullWidth
-            name="nit"
-            id="nit"
-            placeholder='NIT de la empresa*'
-
-          />
-        }
-        rules={{
-          required: true,
-          pattern: /^\d{10}-\d{1}$/
-        }}
+        id="nit"
+        placeholder='NIT*'
+        value={company.nit}
+        disabled
       />
-      {
-        errors.nit?.type === 'required' &&
-        <AlertError severity="error">El Nit es requerido</AlertError> ||
-        errors.nit?.type === 'pattern' &&
-        <AlertError severity="error">El Nit no es valido ej: xxxxxxxxx-x</AlertError>
-      }
 
-      <Controller
+      <TextField
+        variant="standard"
+        margin="normal"
+        fullWidth
+        id="name"
+        placeholder="Company Name"
         name="name"
-        control={control}
-        defaultValue=""
-        render={({ field }) =>
-          <TextField
-            {...field}
-            variant="standard"
-            margin="normal"
-            fullWidth
-            id="name"
-            placeholder="Nombre de la empresa*"
-            name="name"
-            autoFocus
-          />
-        }
-        rules={{
-          required: true,
-        }}
+        autoFocus
+        onChange={(e) => handleChangeInput(e)}
+        value={formInput.name}
+        helperText={!formInput.name && 'name is required'}
+        required
       />
 
-      {
-        errors.name?.type === 'required' &&
-        <AlertError severity="error">El Nombre es requerido</AlertError>
-      }
-
-      <Controller
+      <TextField
+        variant="standard"
+        margin="normal"
+        fullWidth
+        id="address"
+        placeholder="address*"
         name="address"
-        control={control}
-        defaultValue=""
-        render={({ field }) =>
-          <TextField
-            {...field}
-            variant="standard"
-            margin="normal"
-            fullWidth
-            id="address"
-            placeholder="Dirección de la empresa*"
-            name="address"
-          />
-        }
-        rules={{
-          required: true,
-        }}
+        onChange={(e) => handleChangeInput(e)}
+        value={formInput.address}
+        helperText={!formInput.address && 'address is required'}
+        required
       />
 
-      {
-        errors.address?.type === 'required' &&
-        <AlertError severity="error">la Dirección es requerido</AlertError>
-      }
-
-      <Controller
+      <TextField
+        variant="standard"
+        margin="normal"
+        fullWidth
         name="mobilephone"
-        control={control}
-        defaultValue=""
-        render={({ field }) =>
-          <TextField
-            {...field}
-            variant="standard"
-            margin="normal"
-            fullWidth
-            name="mobilephone"
-            id="mobilephone"
-            placeholder="Teléfono*"
-          />
+        id="mobilephone"
+        placeholder="mobilephone*"
+        onChange={(e) => handleChangeInput(e)}
+        value={formInput.mobilephone}
+        helperText={
+          !formInput.mobilephone && 'mobilephone is required' ||
+           formInput.mobilephone.length < 10 && 'mobilephone is not valid'
         }
-        rules={{
-          minLength: 10,
-          required: true,
-        }}
+        required
       />
-      {
-        errors.mobilephone?.type === 'required' &&
-        <AlertError severity="error">El Teléfono es requerido</AlertError> ||
-        errors.mobilephone?.type === 'minLength' &&
-        <AlertError severity="error">El Teléfono no es valido</AlertError>
-      }
 
       <LoadingButton
         loading={loading}
         variant="contained"
         type="submit"
         fullWidth
+        onClick={(e) => onSubmit(e)}
         sx={{ mt: 3, mb: 2 }}
       >
-        Registrar
+        Update Company
       </LoadingButton>
     </Box>
   )

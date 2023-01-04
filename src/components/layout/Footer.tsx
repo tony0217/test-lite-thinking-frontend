@@ -20,14 +20,14 @@ const FooterStyled = styled(Paper)<PaperProps>(({ theme }) => ({
 const FooterNavigation = styled(
   BottomNavigation
 )<BottomNavigationProps>(({ theme }) => ({
-  backgroundColor: theme.palette.default.main,
+  backgroundColor: theme.palette.default.light,
 }));
 
 const FooterNavigationAction = styled(
   BottomNavigationAction
 )<BottomNavigationActionProps>(({ theme }) => ({
-  backgroundColor: theme.palette.default.main,
-  color: theme.palette.neutrals.white,
+  backgroundColor: theme.palette.default.light,
+  color: theme.palette.text.primary,
 }));
 
 const navigation = [
@@ -39,13 +39,13 @@ const navigation = [
 
   {
     pathname: '/register',
-    label: 'Registrar Empresa',
+    label: 'Register Company',
     icon: <AddBusinessIcon />
   },
 
   {
     pathname: '/list',
-    label: 'Empresas Registradas',
+    label: 'List Companies',
     icon: <BusinessIcon />
   },
 ];

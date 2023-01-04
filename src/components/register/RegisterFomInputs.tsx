@@ -38,6 +38,7 @@ function RegisterFomInputs() {
         setSeverity('success');
         setSnackbarMessage(response?.message);
         setLoading(false)
+        window.location.reload()
       }
 
     } catch (error: any) {
@@ -71,7 +72,7 @@ function RegisterFomInputs() {
             fullWidth
             name="nit"
             id="nit"
-            placeholder='NIT de la empresa*'
+            placeholder='NIT*'
           />
         }
         rules={{
@@ -81,9 +82,9 @@ function RegisterFomInputs() {
       />
       {
         errors.nit?.type === 'required' &&
-        <AlertError severity="error">El Nit es requerido</AlertError> ||
+        <AlertError severity="error">Nit is required</AlertError> ||
         errors.nit?.type === 'pattern' &&
-        <AlertError severity="error">El Nit no es valido ej: xxxxxxxxx-x</AlertError>
+        <AlertError severity="error">Nit is not valid example: xxxxxxxxx-x</AlertError>
       }
 
       <Controller
@@ -97,7 +98,7 @@ function RegisterFomInputs() {
             margin="normal"
             fullWidth
             id="name"
-            placeholder="Nombre de la empresa*"
+            placeholder="Company Name*"
             name="name"
             autoFocus
           />
@@ -109,7 +110,7 @@ function RegisterFomInputs() {
 
       {
         errors.name?.type === 'required' &&
-        <AlertError severity="error">El Nombre es requerido</AlertError>
+        <AlertError severity="error">name is required</AlertError>
       }
 
       <Controller
@@ -123,7 +124,7 @@ function RegisterFomInputs() {
             margin="normal"
             fullWidth
             id="address"
-            placeholder="Dirección de la empresa*"
+            placeholder="Company Address*"
             name="address"
           />
         }
@@ -134,7 +135,7 @@ function RegisterFomInputs() {
 
       {
         errors.address?.type === 'required' &&
-        <AlertError severity="error">la Dirección es requerido</AlertError>
+        <AlertError severity="error">address is required</AlertError>
       }
 
       <Controller
@@ -149,7 +150,7 @@ function RegisterFomInputs() {
             fullWidth
             name="mobilephone"
             id="mobilephone"
-            placeholder="Teléfono*"
+            placeholder="mobilephone*"
           />
         }
         rules={{
@@ -159,9 +160,9 @@ function RegisterFomInputs() {
       />
       {
         errors.mobilephone?.type === 'required' &&
-        <AlertError severity="error">El Teléfono es requerido</AlertError> ||
+        <AlertError severity="error">phone is required</AlertError> ||
         errors.mobilephone?.type === 'minLength' &&
-        <AlertError severity="error">El Teléfono no es valido</AlertError>
+        <AlertError severity="error">phone is not valid</AlertError>
       }
 
       <LoadingButton
@@ -171,7 +172,7 @@ function RegisterFomInputs() {
         fullWidth
         sx={{ mt: 3, mb: 2 }}
       >
-        Registrar
+        Register
       </LoadingButton>
     </Box>
   )

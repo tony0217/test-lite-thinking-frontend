@@ -5,7 +5,7 @@ import HeadTitle from '@components/shared/HeadTitle';
 function List() {
   return (
     <MainLayout>
-      <HeadTitle title="Lite Thinking - List" />
+      <HeadTitle title="Positive Thinking - List" />
       <ListMain />
     </MainLayout>
   );

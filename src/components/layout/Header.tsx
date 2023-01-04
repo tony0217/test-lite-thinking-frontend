@@ -5,15 +5,17 @@ import Button from '@mui/material/Button';
 import Toolbar from '@mui/material/Toolbar';
 import { styled } from '@mui/material/styles';
 
-import Logo from '@assets/icons/Logo_Lite_Thinking.png';
+import Logo from '@assets/icons/logomark.svg';
 import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
 
 const Container = styled(AppBar)(({ theme }) => ({
-  backgroundColor: theme.palette.default.main,
+  backgroundColor: theme.palette.default.light,
   boxShadow: 'none',
   height: 78,
   justifyContent: 'center',
-  padding: theme.spacing(0, 32 / 6, 0, 68 / 6),
+  padding: theme.spacing(0, 32 / 6, 0, 110 / 6),
   zIndex: 1
 }));
 
@@ -28,10 +30,16 @@ function Header() {
               height="60"
               width="120"
               image={Logo.src}
-              alt="lite-thinking-icon"
+              alt="positive-thinking-icon"
             />
           </Button>
+
         </Link>
+        <Typography variant="h3" color="primary">
+          Positive
+          Thinking
+          Company
+        </Typography>
       </Toolbar>
     </Container>
   );

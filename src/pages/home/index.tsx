@@ -5,7 +5,7 @@ import HeadTitle from '@components/shared/HeadTitle';
 function Home() {
   return (
     <MainLayout>
-      <HeadTitle title="Lite Thinking - Home" />
+      <HeadTitle title="Positive Thinking - Home" />
       <HomeMain />
     </MainLayout>
   );

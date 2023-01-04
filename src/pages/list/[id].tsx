@@ -9,7 +9,7 @@ function ListDetail() {
   const { id } = router.query;
   return (
     <MainLayout>
-      <HeadTitle title={`Lite Thinking - details ${id}`} />
+      <HeadTitle title={`Positive Thinking - details ${id}`} />
       <RegisterFomInputsDetail />
     </MainLayout>
   );

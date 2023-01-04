@@ -20,7 +20,12 @@ export interface SuccessResponse {
 }
 export interface CompanyApiContextResponse {
   getAll: (page: number, limit?: number) => Promise<CompanyResponse>;
-  getByOne: (term: string) => Promise<{ company: Company }>;
+  getByOne: (term: string) => Promise<{
+    nit: string;
+    name: string;
+    mobilephone: string;
+    address: string; company: Company 
+}>;
   create: (company: Company) => Promise<SuccessResponse | null>;
   update: (id: string, company: Company) => Promise<SuccessResponse | null>;
   remove: (id: string) => Promise<SuccessResponse | null>;

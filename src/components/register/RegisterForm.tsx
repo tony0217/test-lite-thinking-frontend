@@ -37,7 +37,7 @@ function RegisterForm() {
             <ApartmentIcon />
           </Avatar>
           <Typography component="h1">
-            Registrar Empresa
+            Register Company
           </Typography>
           <RegisterFomInputs />
         </ContentForm>

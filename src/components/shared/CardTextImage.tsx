@@ -29,7 +29,7 @@ function CardTextImage({
             alt={title}
           />
           <CardContent sx={{ flex: 1 }}>
-            <Typography component="h1" fontWeight={700}>
+            <Typography component="h1" color="primary" fontWeight={700}>
               {title}
             </Typography>
             <Typography variant="body1" paragraph>

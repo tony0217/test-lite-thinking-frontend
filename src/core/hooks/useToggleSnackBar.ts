@@ -14,7 +14,6 @@ const useToggleSnackBar = (status: boolean): ToggleSnackBarHookProps => {
       return;
     }
     setOpen(false);
-    window.location.reload();
   };
 
   return {

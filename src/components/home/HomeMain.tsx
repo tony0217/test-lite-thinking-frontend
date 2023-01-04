@@ -20,8 +20,8 @@ const Container = styled(Paper)<PaperProps>(({ theme }) => ({
   alignItems: 'flex-center',
   margin: theme.spacing(12, 0),
   height: theme.spacing(350 / 6),
-  backgroundColor: 'grey.800',
   color: '#fff',
+  backgroundColor: 'yellow',
   backgroundSize: 'cover',
   backgroundRepeat: 'no-repeat',
   backgroundPosition: 'center',
@@ -36,15 +36,15 @@ function HomeMain() {
         <Grid container>
           <HomeHero />
           <CardTextImage
-            title="Visión"
-            subtitle="Ser la mejor empresa ágil y adaptable del sector TI en América Latina con servicios y soluciones orientadas en superar la carencia de habilidades empresariales."
+            title="Our vision"
+            subtitle="We are part of an independent global tech group that delivers end-to-end tech solutions through a global delivery model."
             img={vision}
             mr="auto"
             md={5}
           />
           <CardTextImage
-            title="Mision"
-            subtitle=" Ayudamos a líderes y empresas a enfrentar los desafíos actuales y futuros. Fomentamos la transformación cultural hacia la agilidad y la adaptabilidad. Transformamos personas en agentes de cambio con impacto positivo..."
+            title="Our values"
+            subtitle="Commitment , Collaboration , Evolution, Positive Thinking"
             img={mision}
             md={6}
             ml="auto"

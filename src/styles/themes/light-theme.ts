@@ -84,7 +84,7 @@ const theme = createTheme({
     },
     primary: {
       dark: '#73003B',
-      main: '#ffe900',
+      main: '#f33f33',
       light: '#FFDDEE',
     },
     purple: {
@@ -118,7 +118,7 @@ const theme = createTheme({
       light:'#F44336',
     },
     text: {
-      primary: '#24134A',
+      primary: '#25b3c3',
       secondary: '#4E4E71',
     },
     neutrals: {
